@@ -1,0 +1,11 @@
+<h3 [ngClass]="{ 'strike-out': !persona }">
+  {{ persona.nombre || 'missing title' }}
+</h3>
+
+
+<div class="card-footer">
+  <span class="button is-small is-info card-footer-persona" (click)='updateTimeStamp()'>Update Timestamp</span>
+  <span class="button is-small is-success card-footer-persona" *ngIf='true' (click)='updateActive(false)'>Mark Complete</span>
+  <span class="button is-small is-warning card-footer-persona" *ngIf='true' (click)='updateActive(true)'>Mark Incomplete</span>
+  <span class="button is-small is-danger card-footer-persona" (click)='deletePersona()'>Delete</span>
+</div>

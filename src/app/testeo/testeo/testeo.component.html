@@ -1,0 +1,33 @@
+<h1>Items</h1>
+
+<p>This page is a demo of a very basic todo list in Angular, using the Firebase Realtime DB on the backend.</p>
+
+<div *ngFor="let testeo of testeos | async" class="card">
+  <p>{{testeo.nombre}} {{testeo.persona}} </p>
+</div>
+
+<loading-spinner *ngIf="showSpinner"></loading-spinner>
+
+<button type="button" class="button is-danger" (click)='deleteTesteos()'>Delete Entire List</button>
+
+<hr>
+
+<h3>New Persona Form</h3>
+
+<label class="label">Name: </label>
+
+<input placeholder="Nombre" class="input"
+[(ngModel)]="testeo.nombre"
+required minlength="2" maxlength="23"
+#nombre='ngModel' autofocus>
+<input placeholder="Persona" class="input"
+[(ngModel)]="testeo.persona"
+required
+#persona='ngModel' autofocus>
+
+
+<button class="button is-primary"
+(click)='createTesteo()'
+>Create</button>
+
+<testeo-detail></testeo-detail>

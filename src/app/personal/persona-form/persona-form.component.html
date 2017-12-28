@@ -1,0 +1,22 @@
+<h3>New Persona Form</h3>
+
+<label class="label">Name: </label>
+
+<input placeholder="Nombre" class="input"
+[(ngModel)]="persona.nombre"
+required minlength="2" maxlength="23"
+#nombre='ngModel' autofocus>
+
+<div *ngIf="nombre.dirty">
+  <span *ngIf='nombre.errors; then errors else valid'>template renders here...</span>
+</div>
+
+<button class="button is-primary" (click)='createPersona()' [disabled]="!nombre.valid">Create</button>
+
+<ng-template #valid>
+  <p class="help is-success">looks good!</p>
+</ng-template>
+
+<ng-template #errors>
+  <p class="help is-danger">form contains errors!</p>
+</ng-template>

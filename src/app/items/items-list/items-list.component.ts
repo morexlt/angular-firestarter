@@ -18,6 +18,10 @@ export class ItemsListComponent implements OnInit {
 
   constructor(private itemService: ItemService) {
     this.items = this.itemService.getItemsList();
+    console.log(this.items);
+    this.items.subscribe((items) => {
+      console.log(items);
+    });
   }
 
   ngOnInit() {
