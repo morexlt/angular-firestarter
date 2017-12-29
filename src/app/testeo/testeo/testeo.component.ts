@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 import { TesteoService } from '../shared/testeo.service';
+import { PersonaService } from '../../personal/shared/persona.service';
 
 import { Testeo } from '../shared/testeo';
+import { Persona } from '../../personal/shared/persona';
 
 import { Observable } from 'rxjs/Observable';
 
@@ -14,21 +16,20 @@ import { Observable } from 'rxjs/Observable';
 export class TesteoComponent implements OnInit {
 
   testeos: Observable<Testeo[]>;
+  personas: Observable<Persona[]>;
   showSpinner = true;
 
   testeo: Testeo = new Testeo();
 
   constructor(
-    private testeoSvc: TesteoService
+    private testeoSvc: TesteoService,
+    private personaSvc: PersonaService,
   ) {
     this.testeos = this.testeoSvc.getTesteosList();
-    console.log(this.testeos);
-    this.testeos.subscribe((testeos) => {
-      console.log(testeos);
-    });
-
-
-    
+    this.personas = this.personaSvc.getPersonasList();
+    this.personas.subscribe((x)=>{
+      console.log(x);
+    })
 
   }
 

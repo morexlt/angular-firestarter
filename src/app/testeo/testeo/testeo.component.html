@@ -12,7 +12,7 @@
 
 <hr>
 
-<h3>New Persona Form</h3>
+<h3>New Test Form</h3>
 
 <label class="label">Name: </label>
 
@@ -23,7 +23,13 @@ required minlength="2" maxlength="23"
 <input placeholder="Persona" class="input"
 [(ngModel)]="testeo.persona"
 required
-#persona='ngModel' autofocus>
+#persona2='ngModel' autofocus>
+
+<select #persona [(ngModel)]="testeo.persona">
+    <option *ngFor="let persona of personas | async" [value]="persona.$key">
+        {{persona.nombre}}
+    </option>
+</select>
 
 
 <button class="button is-primary"
