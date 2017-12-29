@@ -3,7 +3,7 @@
 <p>This page is a demo of a very basic todo list in Angular, using the Firebase Realtime DB on the backend.</p>
 
 <div *ngFor="let testeo of testeos | async" class="card">
-  <p>{{testeo.nombre}} {{testeo.persona}} </p>
+  <p>{{testeo.nombre}} <testeo-detail [personaIn]='testeo.persona'></testeo-detail> </p>
 </div>
 
 <loading-spinner *ngIf="showSpinner"></loading-spinner>
@@ -29,5 +29,3 @@ required
 <button class="button is-primary"
 (click)='createTesteo()'
 >Create</button>
-
-<testeo-detail></testeo-detail>

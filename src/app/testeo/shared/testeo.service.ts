@@ -23,18 +23,19 @@ export class TesteoService {
 
   // Return an observable list of Testeos
   getTesteosList(): Observable<Testeo[]> {
-    /*return this.testeoRef.snapshotChanges().map((arr) => {
+    return this.testeoRef.snapshotChanges().map((arr) => {
       return arr.map((snap) => Object.assign(snap.payload.val(), { $key: snap.key }) );
     });
-    */
+
+    /*
     this.db.list('/testeo', {}).subscribe(res => {
       this.testeos = res;
       this.final_data = this.testeos.map(function (key) {
-        return this.db.object('/personal/' +${key.$key});
+        return this.db.object('/personal/' +$,{key:$key});
       }); }
     );
 
-
+    */
 
   }
 

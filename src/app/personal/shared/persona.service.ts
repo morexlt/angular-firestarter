@@ -5,6 +5,7 @@ import { AngularFireDatabase, AngularFireList, AngularFireObject } from 'angular
 import { Persona } from './persona';
 
 import { Observable } from 'rxjs/Observable';
+import { Observer } from 'rxjs/Observer';
 
 @Injectable()
 export class PersonaService {
@@ -26,8 +27,9 @@ export class PersonaService {
   }
 
   // Return a single observable item
-  getPersona(key: string): Observable<Persona | null> {
-    
+  getPersona(key: string): Observable<Persona> {
+  //getPersona(key: string): any {
+    /*
     const itemPath = `${this.basePath}/${key}`;
     const item = this.db.object(itemPath).valueChanges() as Observable<Persona | null>;
     console.log('Retorne: ######');
@@ -36,8 +38,13 @@ export class PersonaService {
     item.subscribe(x=>{
       console.log(x);
     })
-
-    return item;
+    */
+    console.log(key);
+    return Observable.create((observer: Observer<Persona>)=>{
+      this.db.database.ref('personas/' + key).on('value', function(snapshot: any) {
+          observer.next(snapshot.val());
+      });
+    });
   }
 
   // Create a brand new item
